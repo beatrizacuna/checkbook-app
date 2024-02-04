@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# FastAPI
+app/__pycache__/
+app/.cachetotals
+app/.cache/
+
+# React
+frontend/bank-app/node_modules/
+frontend/bank-app/build/
+frontend/bank-app/dist/
+frontend/bank-app/.DS_Store
+
+# IDEs
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.idea/
+
+# Compiled Python files
+*.pyc
+*.pyo
+
+# Compiled source
+/dist/
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Package files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.svg
+
+# Dependency directories
+/lib/
+/libs/

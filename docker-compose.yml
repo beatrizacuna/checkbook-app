@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./app    # The path in the machine that have the files, in this case root
+      dockerfile: Dockerfile 
+    command: ["./wait-for-it.sh", "db:5432", "--", "uvicorn", "app.main:app", "--reload", "--port=8000", "--host=0.0.0.0"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+    # environment:
+    #   DATABASE_URL: postgresql://postgres:password@db:5432/checks_db
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    # env_file:
+    #   - .env
+
+  db:
+    image: postgres:12
+    # env_file:
+    #   - .env
+    # environment:
+    #   POSTGRES_USER: postgres
+    #   POSTGRES_PASSWORD: postgres1234
+    #   POSTGRES_DB: checks_db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      # To persist the data in the database we have a volume that persist after container deletion
+      # and copy the files from the container to the volume.
+      - db-volume:/var/lib/postgresql/data 
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes: # All the named volumes needed to persist data after container deletion
+  db-volume: {}
