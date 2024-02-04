@@ -35,7 +35,7 @@ npm install axios
 npm install react-router-dom
 ```
 
-7. En una consola diferente ejecutar los siguientes comandos
+7. En una consola diferente, ejecutar los siguientes comandos
 ```
 cd frontend/bank-app
 npm start
